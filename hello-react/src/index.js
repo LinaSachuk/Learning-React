@@ -1,38 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function Lake({ name }) {
-  return (
-    <div>
-      <h1>Visit {name}!</h1>
-    </div>
-  )
-}
 
-function SkiResort({ name }) {
-  return (
-    <div>
-      <h1>Visit {name}!</h1>
-    </div>
-  )
-}
 
-function App(props) {
+function App() {
+  const [manager, setManager] = useState('Alex');
+  const [status, setStatus] = useState('Open');
   return (
-    <div>
-      {props.season === 'summer' ? (
-        <Lake name='Jenny Lake' />
-      ) : props.season === 'winter' ? (
-        <SkiResort name="JHMR" />
-      ) : (
-            <h1>
-              Come back in the winter or summer!
-            </h1>
-          )
+    <>
+      <div>
+        <h1>Manager on Duty: {manager}</h1>
+        <button onClick={() => setManager('Rachel')}>New Manager</button>
+      </div>
+      <div>
+        <h1>Status: {status}</h1>
+        <button onClick={() => setStatus('Open')}>Open</button>
+        <button onClick={() => setStatus('Break')}>Back in 5</button>
+        <button onClick={() => setStatus('Closed')}>Closed</button>
 
-      }
-    </div>
+      </div>
+    </>
   );
 }
 
@@ -40,7 +28,7 @@ function App(props) {
 
 
 ReactDOM.render(
-  <App season='fall'
+  <App
   />,
   document.getElementById('root')
 );
