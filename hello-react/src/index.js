@@ -1,39 +1,19 @@
-import React, {
-  useReducer
-} from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
+var style = {
+  backgroundColor: 'orange',
+  color: 'white',
+  fontFamily: 'Arial'
 
-
-
-
-function Checkbox() {
-  const [checked, toggle] = useReducer(
-    checked => !checked,
-    false
-  );
-
-
-
-
-
-
-  return (
-    <>
-      <input
-        type='checkbox'
-        value={checked}
-        onChange={toggle}
-      />
-      {checked ? 'checked' : 'not checked'}
-    </>
-  )
 }
 
 
+
 ReactDOM.render(
-  <Checkbox
-  />,
+  <div style={style}>
+    <h1 id="heading-element">Hello world</h1>
+    <p>We glad you are here</p>
+  </div>,
   document.getElementById('root')
-);
+)
