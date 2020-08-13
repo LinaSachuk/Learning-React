@@ -33,12 +33,22 @@ const NotHiring = () =>
 
 class Library extends React.Component {
 
+
+
   state = {
     open: true,
     freeBookmark: true,
     hiring: true
   }
 
+
+  componentDidMount() {
+    console.log('The component is now mounted!')
+  }
+
+  componentDidUpdate() {
+    console.log('The component just updated!')
+  }
 
   toggleOpenClosed = () => {
     this.setState(prevState => ({
