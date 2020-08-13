@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
+
+let bookList = [
+  { "title": "The sun also rises", "author": "Ernest Hemingway", "pages": 260 },
+  { "title": "The sun also rises2", "author": "Ernest Hemingway2", "pages": 2260 },
+  { "title": "The sun also rises3", "author": "Ernest Hemingway3", "pages": 3360 }
+]
+
+
 const Book = ({ title, author, pages }) => {
   return (
     <section>
@@ -13,15 +21,37 @@ const Book = ({ title, author, pages }) => {
 
 
 
-const Library = () => {
-  return (
-    <div>
-      <Book title="The sun also rises" author="Ernest Hemingway" pages={260} />
-      <Book title="Memories of my melancholy whores" author="Gabriel Garcia Marquez" pages={360} />
-      <Book title="Hi hi" author="Hemingway" pages={240} />
+class Library extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      open: false
+    }
+  }
 
-    </div>
-  )
+
+
+  render() {
+    console.log(this.state)
+    const { books } = this.props
+    return (
+      <div>
+        <h1> The library is {this.state.open ? 'open' : 'closed'} </h1>
+        {
+          books.map(
+            (book, i) =>
+              < Book
+                key={i}
+
+                title={book.title}
+                author={book.author}
+                pages={book.pages}
+              />
+          )
+        }
+      </div>
+    )
+  }
 }
 
 
@@ -29,7 +59,8 @@ const Library = () => {
 
 
 
+
 render(
-  <Library />,
+  <Library books={bookList} />,
   document.getElementById('root')
 )
