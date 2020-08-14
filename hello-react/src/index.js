@@ -38,12 +38,15 @@ class Library extends React.Component {
   state = {
     open: true,
     freeBookmark: true,
-    hiring: true
+    hiring: true,
+    data: [],
+    loading: false
   }
 
 
   componentDidMount() {
-    console.log('The component is now mounted!')
+    this.setState({ loading: true })
+
   }
 
   componentDidUpdate() {
