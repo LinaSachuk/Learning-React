@@ -9,7 +9,7 @@ let bookList = [
 ]
 
 
-const Book = ({ title, author, pages, freeBookmark }) => {
+const Book = ({ title = "No title", author = 'No author', pages = 0, freeBookmark }) => {
   return (
     <section>
       <h2>{title}</h2>
@@ -33,7 +33,11 @@ const NotHiring = () =>
 
 class Library extends React.Component {
 
-
+  static defaultProps = {
+    books: [
+      { 'title': 'Tahoe Tales', 'author': 'Chet Witley', 'pages': 1000 }
+    ]
+  }
 
   state = {
     open: true,
@@ -73,10 +77,10 @@ class Library extends React.Component {
           : <div>
             {this.state.data.map(product => {
               return (
-                <div>
+                <div key={product.id}>
                   <h3>Library Product of the Week!</h3>
                   <h4>{product.name}</h4>
-                  <img src={product.image} height={100} />
+                  <img alt={product.name} src={product.image} height={100} />
                 </div>
               )
             })
